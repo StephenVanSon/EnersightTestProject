@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://enersight.com/WellSpring/ClientServices" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://enersight.com/WellSpring/ClientServices" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://enersight.com/WellSpring/ClientServices">
+      <s:element name="HelloWorld">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloArray">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startingNumber" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HelloArrayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloArrayResult" type="tns:ArrayOfDouble" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="double" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateClientRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="eMailAddress" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="firstRequestedOn" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="addToMailingList" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isDeniedAccess" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastRequestedOn" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestAttempts" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateClientRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateClientRequestResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="version" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActiveUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveUsersResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMemoryUsage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMemoryUsageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMemoryUsageResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMemoryUsage2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMemoryUsage2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetMemoryUsage2Result" type="tns:InstanceInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InstanceInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InstancePID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InstanceMemory" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCalculationLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCalculationLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCalculationLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoginLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoginLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLoginLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoggingLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLoggingLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLoggingLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="saveCurrentProject" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemoveUserResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AddPendingUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="guid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddPendingUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddPendingUserResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVersionNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVersionNumberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsActiveUserSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsActiveUserSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsActiveUserSessionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BroadcastMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BroadcastMessageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ClearBroadcastMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ClearBroadcastMessageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateSystemMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="systemMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSystemMessageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateForwardXmlFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="application" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="applicationOffline" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="test" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="testDescription" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateForwardXmlFileResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetOriginalSystemMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOriginalSystemMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOriginalSystemMessageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadForwardXmlFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReadForwardXmlFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReadForwardXmlFileResult" type="tns:ForwardXmlDocument" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ForwardXmlDocument">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Application" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApplicationOffline" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Test" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TestDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="HelloArraySoapIn">
+    <wsdl:part name="parameters" element="tns:HelloArray" />
+  </wsdl:message>
+  <wsdl:message name="HelloArraySoapOut">
+    <wsdl:part name="parameters" element="tns:HelloArrayResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateClientRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateClientRequest" />
+  </wsdl:message>
+  <wsdl:message name="UpdateClientRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateClientRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMemoryUsageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMemoryUsage" />
+  </wsdl:message>
+  <wsdl:message name="GetMemoryUsageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMemoryUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMemoryUsage2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetMemoryUsage2" />
+  </wsdl:message>
+  <wsdl:message name="GetMemoryUsage2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetMemoryUsage2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetCalculationLogSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCalculationLog" />
+  </wsdl:message>
+  <wsdl:message name="GetCalculationLogSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCalculationLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLoginLogSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLoginLog" />
+  </wsdl:message>
+  <wsdl:message name="GetLoginLogSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLoginLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLogSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserLog" />
+  </wsdl:message>
+  <wsdl:message name="GetUserLogSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLoggingLogSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLoggingLog" />
+  </wsdl:message>
+  <wsdl:message name="GetLoggingLogSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLoggingLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserSoapIn">
+    <wsdl:part name="parameters" element="tns:RemoveUser" />
+  </wsdl:message>
+  <wsdl:message name="RemoveUserSoapOut">
+    <wsdl:part name="parameters" element="tns:RemoveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddPendingUserSoapIn">
+    <wsdl:part name="parameters" element="tns:AddPendingUser" />
+  </wsdl:message>
+  <wsdl:message name="AddPendingUserSoapOut">
+    <wsdl:part name="parameters" element="tns:AddPendingUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVersionNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetVersionNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVersionNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsActiveUserSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:IsActiveUserSession" />
+  </wsdl:message>
+  <wsdl:message name="IsActiveUserSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:IsActiveUserSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="BroadcastMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:BroadcastMessage" />
+  </wsdl:message>
+  <wsdl:message name="BroadcastMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:BroadcastMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ClearBroadcastMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:ClearBroadcastMessage" />
+  </wsdl:message>
+  <wsdl:message name="ClearBroadcastMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:ClearBroadcastMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSystemMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSystemMessage" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSystemMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSystemMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateForwardXmlFileSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateForwardXmlFile" />
+  </wsdl:message>
+  <wsdl:message name="UpdateForwardXmlFileSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateForwardXmlFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOriginalSystemMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOriginalSystemMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetOriginalSystemMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOriginalSystemMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReadForwardXmlFileSoapIn">
+    <wsdl:part name="parameters" element="tns:ReadForwardXmlFile" />
+  </wsdl:message>
+  <wsdl:message name="ReadForwardXmlFileSoapOut">
+    <wsdl:part name="parameters" element="tns:ReadForwardXmlFileResponse" />
+  </wsdl:message>
+  <wsdl:portType name="wsClientServicesSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HelloArray">
+      <wsdl:input message="tns:HelloArraySoapIn" />
+      <wsdl:output message="tns:HelloArraySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientRequest">
+      <wsdl:input message="tns:UpdateClientRequestSoapIn" />
+      <wsdl:output message="tns:UpdateClientRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUsers">
+      <wsdl:input message="tns:GetActiveUsersSoapIn" />
+      <wsdl:output message="tns:GetActiveUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemoryUsage">
+      <wsdl:input message="tns:GetMemoryUsageSoapIn" />
+      <wsdl:output message="tns:GetMemoryUsageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemoryUsage2">
+      <wsdl:input message="tns:GetMemoryUsage2SoapIn" />
+      <wsdl:output message="tns:GetMemoryUsage2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCalculationLog">
+      <wsdl:input message="tns:GetCalculationLogSoapIn" />
+      <wsdl:output message="tns:GetCalculationLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginLog">
+      <wsdl:input message="tns:GetLoginLogSoapIn" />
+      <wsdl:output message="tns:GetLoginLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLog">
+      <wsdl:input message="tns:GetUserLogSoapIn" />
+      <wsdl:output message="tns:GetUserLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggingLog">
+      <wsdl:input message="tns:GetLoggingLogSoapIn" />
+      <wsdl:output message="tns:GetLoggingLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <wsdl:input message="tns:RemoveUserSoapIn" />
+      <wsdl:output message="tns:RemoveUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPendingUser">
+      <wsdl:input message="tns:AddPendingUserSoapIn" />
+      <wsdl:output message="tns:AddPendingUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionNumber">
+      <wsdl:input message="tns:GetVersionNumberSoapIn" />
+      <wsdl:output message="tns:GetVersionNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsActiveUserSession">
+      <wsdl:input message="tns:IsActiveUserSessionSoapIn" />
+      <wsdl:output message="tns:IsActiveUserSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BroadcastMessage">
+      <wsdl:input message="tns:BroadcastMessageSoapIn" />
+      <wsdl:output message="tns:BroadcastMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ClearBroadcastMessage">
+      <wsdl:input message="tns:ClearBroadcastMessageSoapIn" />
+      <wsdl:output message="tns:ClearBroadcastMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSystemMessage">
+      <wsdl:input message="tns:UpdateSystemMessageSoapIn" />
+      <wsdl:output message="tns:UpdateSystemMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateForwardXmlFile">
+      <wsdl:input message="tns:UpdateForwardXmlFileSoapIn" />
+      <wsdl:output message="tns:UpdateForwardXmlFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOriginalSystemMessage">
+      <wsdl:input message="tns:GetOriginalSystemMessageSoapIn" />
+      <wsdl:output message="tns:GetOriginalSystemMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadForwardXmlFile">
+      <wsdl:input message="tns:ReadForwardXmlFileSoapIn" />
+      <wsdl:output message="tns:ReadForwardXmlFileSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="wsClientServicesSoap" type="tns:wsClientServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloArray">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/HelloArray" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientRequest">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/UpdateClientRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUsers">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetActiveUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemoryUsage">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetMemoryUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemoryUsage2">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetMemoryUsage2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalculationLog">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetCalculationLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginLog">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetLoginLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLog">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetUserLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggingLog">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetLoggingLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/RemoveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPendingUser">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/AddPendingUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionNumber">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetVersionNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsActiveUserSession">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/IsActiveUserSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BroadcastMessage">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/BroadcastMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearBroadcastMessage">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/ClearBroadcastMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSystemMessage">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/UpdateSystemMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateForwardXmlFile">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/UpdateForwardXmlFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOriginalSystemMessage">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetOriginalSystemMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadForwardXmlFile">
+      <soap:operation soapAction="http://enersight.com/WellSpring/ClientServices/ReadForwardXmlFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="wsClientServicesSoap12" type="tns:wsClientServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HelloArray">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/HelloArray" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateClientRequest">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/UpdateClientRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveUsers">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetActiveUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemoryUsage">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetMemoryUsage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemoryUsage2">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetMemoryUsage2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalculationLog">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetCalculationLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginLog">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetLoginLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserLog">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetUserLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoggingLog">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetLoggingLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveUser">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/RemoveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPendingUser">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/AddPendingUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVersionNumber">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetVersionNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsActiveUserSession">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/IsActiveUserSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BroadcastMessage">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/BroadcastMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ClearBroadcastMessage">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/ClearBroadcastMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSystemMessage">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/UpdateSystemMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateForwardXmlFile">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/UpdateForwardXmlFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOriginalSystemMessage">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/GetOriginalSystemMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadForwardXmlFile">
+      <soap12:operation soapAction="http://enersight.com/WellSpring/ClientServices/ReadForwardXmlFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="wsClientServices">
+    <wsdl:port name="wsClientServicesSoap" binding="tns:wsClientServicesSoap">
+      <soap:address location="http://test.enersight.net/wellspring3/wsclientservices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="wsClientServicesSoap12" binding="tns:wsClientServicesSoap12">
+      <soap12:address location="http://test.enersight.net/wellspring3/wsclientservices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
